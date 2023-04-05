@@ -1,3 +1,6 @@
+// Copyright (c) 2023 Dashlane Inc
+// This software is licensed under the MIT License. See the LICENSE.md file for details.
+
 import Foundation
 import CryptoKit
 
