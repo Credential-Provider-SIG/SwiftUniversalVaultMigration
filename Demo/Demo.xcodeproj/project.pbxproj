@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4547A01E29EDC8C100376A5D /* openbox.icns in Resources */ = {isa = PBXBuildFile; fileRef = 4547A01C29EDC8C100376A5D /* openbox.icns */; };
+		4547A01F29EDC8C100376A5D /* openbox.icns in Resources */ = {isa = PBXBuildFile; fileRef = 4547A01C29EDC8C100376A5D /* openbox.icns */; };
+		4547A02029EDC8C100376A5D /* sealedbox.icns in Resources */ = {isa = PBXBuildFile; fileRef = 4547A01D29EDC8C100376A5D /* sealedbox.icns */; };
+		4547A02129EDC8C100376A5D /* sealedbox.icns in Resources */ = {isa = PBXBuildFile; fileRef = 4547A01D29EDC8C100376A5D /* sealedbox.icns */; };
 		454D87FC29D5C3D100ACAC57 /* DemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454D87FB29D5C3D100ACAC57 /* DemoApp.swift */; };
 		454D87FE29D5C3D100ACAC57 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 454D87FD29D5C3D100ACAC57 /* ContentView.swift */; };
 		454D880029D5C3D200ACAC57 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 454D87FF29D5C3D200ACAC57 /* Assets.xcassets */; };
@@ -20,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4547A01C29EDC8C100376A5D /* openbox.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = openbox.icns; sourceTree = "<group>"; };
+		4547A01D29EDC8C100376A5D /* sealedbox.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = sealedbox.icns; sourceTree = "<group>"; };
 		454D87F829D5C3D100ACAC57 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		454D87FB29D5C3D100ACAC57 /* DemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoApp.swift; sourceTree = "<group>"; };
 		454D87FD29D5C3D100ACAC57 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -85,6 +91,8 @@
 				454D87FD29D5C3D100ACAC57 /* ContentView.swift */,
 				454D87FF29D5C3D200ACAC57 /* Assets.xcassets */,
 				454D880129D5C3D200ACAC57 /* Demo.entitlements */,
+				4547A01C29EDC8C100376A5D /* openbox.icns */,
+				4547A01D29EDC8C100376A5D /* sealedbox.icns */,
 				454D880229D5C3D200ACAC57 /* Preview Content */,
 			);
 			path = Demo;
@@ -219,8 +227,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4547A02029EDC8C100376A5D /* sealedbox.icns in Resources */,
 				454D880429D5C3D200ACAC57 /* Preview Assets.xcassets in Resources */,
 				454D880029D5C3D200ACAC57 /* Assets.xcassets in Resources */,
+				4547A01E29EDC8C100376A5D /* openbox.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,8 +238,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4547A02129EDC8C100376A5D /* sealedbox.icns in Resources */,
 				454D881A29D5C43900ACAC57 /* Preview Assets.xcassets in Resources */,
 				454D881629D5C43900ACAC57 /* Assets.xcassets in Resources */,
+				4547A01F29EDC8C100376A5D /* openbox.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

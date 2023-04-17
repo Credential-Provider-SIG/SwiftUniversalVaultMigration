@@ -5,12 +5,16 @@
 	<key>UTExportedTypeDeclarations</key>
 	<array>
 		<dict>
+			<key>UTTypeIconFiles</key>
+			<array>
+				<string>sealedbox</string>
+			</array>
 			<key>UTTypeConformsTo</key>
 			<array>
 				<string>public.data</string>
 			</array>
-			<key>UTTypeIconFiles</key>
-			<array/>
+			<key>UTTypeDescription</key>
+			<string>Sealed Box for Vault Migration</string>
 			<key>UTTypeIdentifier</key>
 			<string>universalvaultmigration.experimental.sealedbox</string>
 			<key>UTTypeTagSpecification</key>
@@ -19,19 +23,31 @@
 				<array>
 					<string>application/universalvaultmigration-sealedbox</string>
 				</array>
+				<key>public.filename-extension</key>
+				<array>
+					<string>sealedbox</string>
+				</array>
 			</dict>
 		</dict>
 		<dict>
+			<key>UTTypeIconFiles</key>
+			<array>
+				<string>openbox</string>
+			</array>
 			<key>UTTypeConformsTo</key>
 			<array>
 				<string>public.data</string>
 			</array>
-			<key>UTTypeIconFiles</key>
-			<array/>
+			<key>UTTypeDescription</key>
+			<string>Open Box for Vault Migration</string>
 			<key>UTTypeIdentifier</key>
 			<string>universalvaultmigration.experimental.openbox</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>openbox</string>
+				</array>
 				<key>public.mime-type</key>
 				<array>
 					<string>application/universalvaultmigration-openbox</string>

@@ -10,6 +10,15 @@
 import SwiftUI
 import UniversalVaultMigration
 
+public enum Item: String, Identifiable, Hashable, CaseIterable {
+    case passkeys
+    case passwords
+
+    public var id: String {
+        rawValue
+    }
+}
+
 @available(macOS 13.0, iOS 16, *)
 public struct MainView: View {
     @State
