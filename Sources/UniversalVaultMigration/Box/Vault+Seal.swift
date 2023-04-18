@@ -20,12 +20,13 @@ public extension Vault {
             let symmetricKey = try privateKey.symmetricKey(with: openBox.publicKey, salt: salt)
 
             // Seal the vault using the symmetric key
-            let vault = try self.seal(using: symmetricKey)
+            let encryptedData = try self.seal(using: symmetricKey)
 
             // Generate the sealed box
             return SealedBox(publicKey: privateKey.publicKey,
-                             encryptedVault: vault,
-                             keyDerivationSalt: salt)
+                             encryptedVault: encryptedData.data,
+                             keyDerivationSalt: salt,
+                             encryptionNonce: Data(encryptedData.encryptionNonce))
 
         } catch let error as EncodingError {
             throw SealingError.couldNotEncodeData(error)
@@ -33,15 +34,15 @@ public extension Vault {
 
     }
 
-    private func seal(using symmetricKey: SymmetricKey) throws -> Data {
+    private func seal(using symmetricKey: SymmetricKey) throws -> EncryptedData {
         do {
             // Encode the vault into JSON
             let encodedVault = try JSONEncoder().encode(self)
             // Encrypt the vault using the symmetric key
-            guard let encryptedVaultData = try AES.GCM.seal(encodedVault, using: symmetricKey).combined else {
-                throw SealingError.couldNotSealData(nil)
-            }
-            return encryptedVaultData
+            let encryptedVaultData = try AES.GCM.seal(encodedVault, using: symmetricKey)
+            let cipherAndTag = encryptedVaultData.ciphertext + encryptedVaultData.tag
+            return EncryptedData(encryptionNonce: encryptedVaultData.nonce,
+                                 data: cipherAndTag)
         } catch let error as EncodingError {
             throw SealingError.couldNotEncodeData(error)
         } catch let error as CryptoKitError {
@@ -56,6 +57,13 @@ public enum SealingError: Error {
     case couldNotEncodeData(EncodingError)
     /// The Vault JSON data cannot be sealed using the AES.GCM function.
     case couldNotSealData(CryptoKitError?)
+}
+
+private struct EncryptedData {
+    /// Nonce used to encrypt the data
+    let encryptionNonce: AES.GCM.Nonce
+    /// Encrypted data in the format of `encryptedData || authenticationTag
+    let data: Data
 }
 
 private extension Data {

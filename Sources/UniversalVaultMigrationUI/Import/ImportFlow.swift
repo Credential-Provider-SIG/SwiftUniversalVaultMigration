@@ -148,7 +148,7 @@ struct ImportFlow_Previews: PreviewProvider {
         }))
         .previewDisplayName("Waiting")
 
-        ImportFlow(model: .init(initialStep: .importing(.init(publicKey: PrivateKey().publicKey, encryptedVault: Data(), keyDerivationSalt: Data())), completion: { _  in
+        ImportFlow(model: .init(initialStep: .importing(.init(publicKey: PrivateKey().publicKey, encryptedVault: Data(), keyDerivationSalt: Data(), encryptionNonce: .init())), completion: { _  in
 
         }))
         .previewDisplayName("Importing")
