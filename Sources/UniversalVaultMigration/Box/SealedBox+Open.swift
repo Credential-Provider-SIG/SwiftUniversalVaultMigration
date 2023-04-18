@@ -34,9 +34,9 @@ private extension SealedBox {
             // The authenticationTag is always 16 bytes
             let authenticationTagBytesCount = 16
             // Extract the tag from the sealed data in format `encryptedData || authenticationTag`
-            let authenticationTag = encryptedVault[encryptedVault.index(encryptedVault.endIndex, offsetBy: -authenticationTagBytesCount)...]
+            let authenticationTag = encryptedVault[(encryptedVault.endIndex - authenticationTagBytesCount)...]
             // Extract the encryptedData from the sealed data in format `encryptedData || authenticationTag`
-            let encryptedData = encryptedVault[..<encryptedVault.index(encryptedVault.startIndex, offsetBy: encryptedVault.count - authenticationTagBytesCount)]
+            let encryptedData = encryptedVault[..<(encryptedVault.endIndex - authenticationTagBytesCount)]
             // Open the SealedBox
             let box = try AES.GCM.SealedBox(nonce: AES.GCM.Nonce(data: encryptionNonce),
                                             ciphertext: encryptedData,
