@@ -17,6 +17,12 @@ public struct SealedBox: Codable, Equatable {
     /// Salt used for symmetric key derivation.
     let keyDerivationSalt: Data
 
+    /// Nonce used in the encryption of the vault
+    let encryptionNonce: Data
+
+    /// The authentication tag of the `encryptedVault`
+    let authenticationTag: Data
+
     /// Sealed Box that contains the encrypted vault to transmit to the vault receiver.
     /// - Parameters:
     ///   - publicKey: Public Key of the Vault provider used to share the vault content symmetric key with the vault receiver.
@@ -24,9 +30,13 @@ public struct SealedBox: Codable, Equatable {
     ///   - keyDerivationSalt:  Salt used for symmetric key derivation.
     public init(publicKey: PublicKey,
                 encryptedVault: Data,
-                keyDerivationSalt: Data) {
+                keyDerivationSalt: Data,
+                encryptionNonce: Data,
+                authenticationTag: Data) {
         self.publicKey = publicKey
         self.encryptedVault = encryptedVault
         self.keyDerivationSalt = keyDerivationSalt
+        self.encryptionNonce = encryptionNonce
+        self.authenticationTag = authenticationTag
     }
 }

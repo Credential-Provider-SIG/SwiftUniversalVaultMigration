@@ -16,7 +16,6 @@ let package = Package(
                  targets: ["UniversalVaultMigrationUI"])
     ],
     dependencies: [
-        .package(url: "https://github.com/apple/swift-crypto.git", "1.0.0" ..< "3.0.0"),
     ],
     targets: [
         .target(
