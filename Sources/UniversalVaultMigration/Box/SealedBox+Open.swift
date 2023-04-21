@@ -31,15 +31,9 @@ public enum OpenError: Error {
 private extension SealedBox {
     func open(using symmetricKey: SymmetricKey) throws -> Vault {
         do {
-            // The authenticationTag is always 16 bytes
-            let authenticationTagBytesCount = 16
-            // Extract the tag from the sealed data in format `encryptedData || authenticationTag`
-            let authenticationTag = encryptedVault[(encryptedVault.endIndex - authenticationTagBytesCount)...]
-            // Extract the encryptedData from the sealed data in format `encryptedData || authenticationTag`
-            let encryptedData = encryptedVault[..<(encryptedVault.endIndex - authenticationTagBytesCount)]
             // Open the SealedBox
             let box = try AES.GCM.SealedBox(nonce: AES.GCM.Nonce(data: encryptionNonce),
-                                            ciphertext: encryptedData,
+                                            ciphertext: encryptedVault,
                                             tag: authenticationTag)
             let decryptedData = try AES.GCM.open(box, using: symmetricKey)
             return try JSONDecoder().decode(Vault.self, from: decryptedData)

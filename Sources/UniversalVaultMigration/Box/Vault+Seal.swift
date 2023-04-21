@@ -26,7 +26,8 @@ public extension Vault {
             return SealedBox(publicKey: privateKey.publicKey,
                              encryptedVault: encryptedData.data,
                              keyDerivationSalt: salt,
-                             encryptionNonce: Data(encryptedData.encryptionNonce))
+                             encryptionNonce: Data(encryptedData.encryptionNonce),
+                             authenticationTag: encryptedData.authenticationTag)
 
         } catch let error as EncodingError {
             throw SealingError.couldNotEncodeData(error)
@@ -40,9 +41,10 @@ public extension Vault {
             let encodedVault = try JSONEncoder().encode(self)
             // Encrypt the vault using the symmetric key
             let encryptedVaultData = try AES.GCM.seal(encodedVault, using: symmetricKey)
-            let cipherAndTag = encryptedVaultData.ciphertext + encryptedVaultData.tag
+
             return EncryptedData(encryptionNonce: encryptedVaultData.nonce,
-                                 data: cipherAndTag)
+                                 authenticationTag: encryptedVaultData.tag,
+                                 data: encryptedVaultData.ciphertext)
         } catch let error as EncodingError {
             throw SealingError.couldNotEncodeData(error)
         } catch let error as CryptoKitError {
@@ -62,7 +64,9 @@ public enum SealingError: Error {
 private struct EncryptedData {
     /// Nonce used to encrypt the data
     let encryptionNonce: AES.GCM.Nonce
-    /// Encrypted data in the format of `encryptedData || authenticationTag
+    /// Authentication of the ciphered data
+    let authenticationTag: Data
+    /// Encrypted data
     let data: Data
 }
 
