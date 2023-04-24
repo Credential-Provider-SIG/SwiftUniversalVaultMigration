@@ -18,7 +18,7 @@ public struct Passkey: Codable, Equatable {
     public let userHandle: String
 
     /// Human-palatable name for the user account, intended only for display, provided by the Relying Party
-    public let userDiplayName: String
+    public let userDisplayName: String
 
     /// Signature counter incremented for each successful login operation to aid the Relying Party in detecting cloned authenticators
     public let counter: String
@@ -33,7 +33,7 @@ public struct Passkey: Codable, Equatable {
                 relyingPartyId: String,
                 relyingPartyName: String,
                 userHandle: String,
-                userDiplayName: String,
+                userDisplayName: String,
                 counter: String,
                 keyAlgorithm: String,
                 privateKey: Data) {
@@ -41,7 +41,7 @@ public struct Passkey: Codable, Equatable {
         self.relyingPartyId = relyingPartyId
         self.relyingPartyName = relyingPartyName
         self.userHandle = userHandle
-        self.userDiplayName = userDiplayName
+        self.userDisplayName = userDisplayName
         self.counter = counter
         self.keyAlgorithm = keyAlgorithm
         self.privateKey = privateKey

@@ -29,7 +29,7 @@ struct PasskeysList: View {
                     Text(passkey.relyingPartyName)
                         .font(.body.weight(.medium))
                         .foregroundColor(.primary)
-                    Text(passkey.userDiplayName)
+                    Text(passkey.userDisplayName)
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
