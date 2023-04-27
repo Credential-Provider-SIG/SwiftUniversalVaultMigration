@@ -62,7 +62,7 @@ private extension Passkey {
                   relyingPartyId: name,
                   relyingPartyName: name,
                   userHandle: UUID().uuidString,
-                  userDiplayName: UUID().uuidString,
+                  userDisplayName: UUID().uuidString,
                   counter: "1",
                   keyAlgorithm: "alg",
                   privateKey: "key".data(using: .utf8)!)

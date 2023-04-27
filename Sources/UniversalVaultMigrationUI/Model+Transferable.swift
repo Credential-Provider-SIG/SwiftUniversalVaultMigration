@@ -17,7 +17,7 @@ public extension UTType {
     static let passwordManagerSealedBox = UTType(mimeType: "application/universalvaultmigration-sealedbox")!
 }
 
-@available(macOS 13.0, *)
+@available(macOS 13.0, iOS 16.0, *)
 extension ProxyRepresentation where Item: Codable, ProxyRepresentation == URL {
     init(filenameExtension: String) {
         self.init { item in
