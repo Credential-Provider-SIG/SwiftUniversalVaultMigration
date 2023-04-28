@@ -9,11 +9,16 @@
 
 import SwiftUI
 
-struct InfoArea: View {
+public struct InfoArea: View {
     let title: String
     let message: String
 
-    var body: some View {
+    public init(title: String, message: String) {
+        self.title = title
+        self.message = message
+    }
+
+    public var body: some View {
         VStack(spacing: 10) {
             Text(title).font(.largeTitle.bold())
             Text(message).font(.body.bold())
